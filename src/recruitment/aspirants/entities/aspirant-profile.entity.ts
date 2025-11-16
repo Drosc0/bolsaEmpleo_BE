@@ -16,41 +16,37 @@ export class AspirantProfile {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ type: 'varchar', length: 100, nullable: true }) // <-- Añadido 'type: 'varchar'
-  firstName: string;
+  @Column({ type: 'varchar', length: 100, nullable: true })
+  firstName?: string;
 
-  @Column({ type: 'varchar', length: 100, nullable: true }) // <-- Añadido 'type: 'varchar'
-  lastName: string;
+  @Column({ type: 'varchar', length: 100, nullable: true })
+  lastName?: string;
 
   @Column({ type: 'varchar', length: 100, unique: true })
   email: string;
 
-  @Column({ type: 'varchar', length: 20, nullable: true }) // <-- Añadido 'type: 'varchar'
-  phone: string;
+  @Column({ type: 'varchar', length: 20, nullable: true })
+  phone?: string;
 
   @Column({ type: 'text', nullable: true })
-  bio: string | null;
+  bio?: string;
 
   @Column({ type: 'varchar', length: 255, nullable: true })
-  linkedinUrl: string | null;
+  linkedinUrl?: string;
 
   @Column({ type: 'varchar', length: 255, nullable: true })
-  portfolioUrl: string | null;
+  portfolioUrl?: string;
 
   @Column({ type: 'varchar', length: 50, nullable: true })
-  currentJobTitle: string | null;
+  currentJobTitle?: string;
 
   @Column({ type: 'varchar', length: 255, nullable: true })
-  photoUrl: string | null;
+  photoUrl?: string;
 
   @Column({ type: 'varchar', length: 255, nullable: true })
-  cvUrl: string | null;
+  cvUrl?: string;
 
-  // ===========
-  // RELACIONES
-  // ===========
-
-  // 1. Relación 1:1 con el Usuario (dueño del perfil)
+  // =========== RELACIONES ===========
   @Column({ unique: true })
   userId: number;
 
@@ -58,21 +54,18 @@ export class AspirantProfile {
   @JoinColumn({ name: 'userId' })
   user: User;
 
-  // 2. Relación 1:N con Habilidades
   @OneToMany(() => SkillItem, (skill) => skill.profile, {
     cascade: ['insert', 'update'],
     onDelete: 'CASCADE',
   })
   skills: SkillItem[];
 
-  // 3. Relación 1:N con Experiencia Laboral
   @OneToMany(() => ExperienceItem, (experience) => experience.profile, {
     cascade: ['insert', 'update'],
     onDelete: 'CASCADE',
   })
   experience: ExperienceItem[];
 
-  // 4. Relación 1:N con Postulaciones (CORRECCIÓN CLAVE)
   @OneToMany(() => Application, (application) => application.aspirantProfile)
   applications: Application[];
 }

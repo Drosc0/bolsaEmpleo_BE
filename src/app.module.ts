@@ -36,7 +36,7 @@ import { RolesGuard } from './auth/guards/roles.guard';
           // Carga automática de todas las entidades
           autoLoadEntities: true,
 
-          // Sincronizar solo en desarrollo. En producción, usa migraciones.
+          // Sincronizar solo en desarrollo.
           synchronize: !isProd,
 
           //CONFIGURACIÓN PARA MIGRACIONES

@@ -22,5 +22,33 @@ export class UserService {
   }
 
   // Puedes añadir métodos CRUD aquí (create, update, findAll, delete)
+
+  async getApplicantProfile(userId: number): Promise<{
+    name: string;
+    email: string;
+    phone?: string;
+    linkedinUrl?: string;
+    portfolioUrl?: string;
+  }> {
+    const user = await this.usersRepository.findOne({
+      where: { id: userId },
+      relations: ['aspirantProfile'],
+    });
+
+    if (!user || !user.aspirantProfile) {
+      throw new Error('Perfil de aspirante no encontrado');
+    }
+
+    const profile = user.aspirantProfile;
+
+    return {
+      name: `${profile.firstName} ${profile.lastName}`,
+      email: user.email,
+      phone: profile.phone ?? undefined,
+      linkedinUrl: profile.linkedinUrl ?? undefined,
+      portfolioUrl: profile.portfolioUrl ?? undefined,
+    };
+  }
+
   // async create(userData: Partial<User>): Promise<User> { ... }
 }
