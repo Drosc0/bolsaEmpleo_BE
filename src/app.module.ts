@@ -27,7 +27,8 @@ import { RolesGuard } from './auth/guards/roles.guard';
         const dbUrl = configService.get<string>('DATABASE_URL');
         const isProd = configService.get<string>('NODE_ENV') === 'production';
 
-        console.log('🔗 [DB Config] URL de la Base de Datos leída:', dbUrl);
+        //info de conexion, eliminar mas adelante, expone datos sensibles
+        //console.log('🔗 [DB Config] URL de la Base de Datos leída:', dbUrl);
 
         return {
           type: 'postgres',
