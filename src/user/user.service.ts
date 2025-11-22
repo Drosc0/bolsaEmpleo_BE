@@ -9,7 +9,7 @@ export class UserService {
     // Inyecta el repositorio de la entidad User
     @InjectRepository(User)
     private usersRepository: Repository<User>,
-  ) {}
+  ) { }
 
   // Usado por la AuthLocalStrategy y el Login
   async findOneByEmail(email: string): Promise<User | null> {
@@ -48,6 +48,18 @@ export class UserService {
       linkedinUrl: profile.linkedinUrl ?? undefined,
       portfolioUrl: profile.portfolioUrl ?? undefined,
     };
+  }
+
+  // ==========================================================
+  // MÉTODOS PARA ESTADÍSTICAS
+  // ==========================================================
+  async countAll(): Promise<number> {
+    return this.usersRepository.count();
+  }
+
+  async countByRole(role: string): Promise<number> {
+    // Nota: Asegúrate de que el rol coincida con el enum UserRole
+    return this.usersRepository.count({ where: { role: role as any } });
   }
 
   // async create(userData: Partial<User>): Promise<User> { ... }

@@ -17,6 +17,7 @@ import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
 import { RolesGuard } from 'src/auth/guards/roles.guard';
 import { Roles } from 'src/auth/decorators/roles.decorator';
 import { UserRole } from 'src/user/user.entity';
+import { Public } from 'src/auth/decorators/public.decorator';
 
 // Interfaz para tipar el objeto de solicitud con el usuario adjunto por el JwtAuthGuard
 interface CustomRequest extends Request {
@@ -28,17 +29,19 @@ interface CustomRequest extends Request {
 
 @Controller('recruitment/offers')
 export class JobOffersController {
-  constructor(private readonly jobOffersService: JobOffersService) {}
+  constructor(private readonly jobOffersService: JobOffersService) { }
 
   // =========================================================================
   // RUTAS PÚBLICAS (No requieren autenticación)
   // =========================================================================
 
+  @Public()
   @Get()
   async findAll() {
     return this.jobOffersService.findAll();
   }
 
+  @Public()
   @Get(':id')
   async findOne(@Param('id', ParseIntPipe) id: number) {
     return this.jobOffersService.findOne(id);
