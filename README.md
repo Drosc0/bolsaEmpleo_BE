@@ -91,7 +91,7 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 
-## Recursos
+## Recursos de Nest.js
 
 - [Nest](https://github.com/nestjs/nest)
 - [NestJS Documentation](https://docs.nestjs.com) 
@@ -100,7 +100,8 @@ $ npm run test:cov
 - [NestJS Mau](https://mau.nestjs.com)
 - [NestJS Devtools](https://devtools.nestjs.com)
 - [enterprise support](https://enterprise.nestjs.com)
-- [X](https://x.com/nestframework) y [LinkedIn](https://linkedin.com/company/nestjs)
+- [X](https://x.com/nestframework)
+- [LinkedIn](https://linkedin.com/company/nestjs)
 - [Jobs board](https://jobs.nestjs.com).
 
 ## Soporte
@@ -110,4 +111,4 @@ $ npm run test:cov
 
 ## License
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+[MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
