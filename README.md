@@ -1,4 +1,3 @@
-
 # Bolsa de Empleo Backend
 
 Este proyecto implementa el backend para una aplicación de bolsa de empleo, desarrollado con **NestJS** y conectado a **Supabase** para la gestión de base de datos y autenticación.
@@ -59,7 +58,7 @@ Además, en la raíz del proyecto se incluyen archivos como `package.json` para 
 
 ## Project setup
 
-- Necesitas crear un .env con tu base de datos tu Configuración del Sistema y configuracion de JWT/Seguridad
+- Necesitas crear un `.env` con tu base de datos tu Configuración del Sistema y configuracion de JWT/Seguridad
 
 ```bash
 $ npm install
@@ -102,13 +101,17 @@ $ npm run test:cov
 - [enterprise support](https://enterprise.nestjs.com)
 - [X](https://x.com/nestframework)
 - [LinkedIn](https://linkedin.com/company/nestjs)
-- [Jobs board](https://jobs.nestjs.com).
+- [Jobs board](https://jobs.nestjs.com)
 
 ## Soporte
 
-- [Mas informacion](https://docs.nestjs.com/support).
+- [Mas informacion](https://docs.nestjs.com/support)
 - [@nestframework](https://twitter.com/nestframework)
 
 ## License
 
-[MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+[MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE)
+
+## Autor
+
+`Andrés Caso Iglesias`
