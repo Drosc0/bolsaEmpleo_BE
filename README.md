@@ -1,37 +1,71 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+# Bolsa de Empleo Backend
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+Este proyecto implementa el backend para una aplicación de bolsa de empleo, desarrollado con **NestJS** y conectado a **Supabase** para la gestión de base de datos y autenticación.
 
-## Description
+## Características principales
+- API REST construida con **NestJS**.
+- Autenticación basada en **JWT**.
+- Roles de usuario: **Candidato** y **Empresa**.
+- Gestión de:
+  - Usuarios (registro, login, perfil).
+  - Ofertas de empleo (crear, listar, actualizar, eliminar).
+  - Aplicaciones a ofertas (postulación).
+- Integración con **Supabase** para persistencia y seguridad.
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## Estructura del proyecto
+El proyecto está organizado en una carpeta principal que contiene el código fuente en `src`. Dentro de `src` se encuentra el archivo de arranque `main.ts` y el módulo raíz `app.module.ts`. La lógica de negocio está dividida en módulos, cada uno con su propio controlador, servicio y DTOs. Los módulos principales son:
+- **auth**: gestiona la autenticación y generación de tokens.
+- **users**: maneja el registro, login y perfil de los usuarios.
+- **jobs**: permite crear, listar, actualizar y eliminar ofertas de empleo.
+- **applications**: gestiona las postulaciones de los candidatos a las ofertas.
+
+Además, en la raíz del proyecto se incluyen archivos como `package.json` para dependencias, `.env` para variables de entorno y el propio `README.md`.
+
+
+## Endpoints
+
+### Autenticación
+
+| Método | Endpoint       | Descripción                |
+|--------|----------------|----------------------------|
+| POST   | /auth/register | Registro de usuario        |
+| POST   | /auth/login    | Login y obtención de token |
+
+### Usuarios
+
+| Método | Endpoint        | Descripción                 |
+|--------|-----------------|-----------------------------|
+| GET    | /users/profile  | Obtener perfil del usuario  |
+
+### Ofertas de empleo
+
+| Método | Endpoint        | Descripción                     |
+|--------|-----------------|---------------------------------|
+| GET    | /jobs           | Listar todas las ofertas        |
+| GET    | /jobs/:id       | Obtener detalle de una oferta   |
+| POST   | /jobs           | Crear oferta (empresa)          |
+| PUT    | /jobs/:id       | Actualizar oferta               |
+| DELETE | /jobs/:id       | Eliminar oferta                 |
+
+### Aplicaciones
+
+| Método | Endpoint             | Descripción                            |
+|--------|----------------------|----------------------------------------|
+| POST   | /applications        | Aplicar a una oferta                   |
+| GET    | /applications        | Listar aplicaciones del usuario        |
+| GET    | /applications/:id    | Detalle de una aplicación              |
+
 
 ## Project setup
+
+- Necesitas crear un .env con tu base de datos tu Configuración del Sistema y configuracion de JWT/Seguridad
 
 ```bash
 $ npm install
 ```
 
-## Compile and run the project
+## Compilar y correr el proyecto
 
 ```bash
 # development
@@ -44,7 +78,7 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 
-## Run tests
+## Lanzar tests
 
 ```bash
 # unit tests
@@ -57,41 +91,22 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 
-## Deployment
+## Recursos
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
+- [Nest](https://github.com/nestjs/nest)
+- [NestJS Documentation](https://docs.nestjs.com) 
+- [Discord channel](https://discord.gg/G7Qnnhy)
+- [courses](https://courses.nestjs.com/)
+- [NestJS Mau](https://mau.nestjs.com)
+- [NestJS Devtools](https://devtools.nestjs.com)
+- [enterprise support](https://enterprise.nestjs.com)
+- [X](https://x.com/nestframework) y [LinkedIn](https://linkedin.com/company/nestjs)
+- [Jobs board](https://jobs.nestjs.com).
 
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+## Soporte
 
-```bash
-$ npm install -g @nestjs/mau
-$ mau deploy
-```
-
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
-
-## Resources
-
-Check out a few resources that may come in handy when working with NestJS:
-
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+- [Mas informacion](https://docs.nestjs.com/support).
+- [@nestframework](https://twitter.com/nestframework)
 
 ## License
 
