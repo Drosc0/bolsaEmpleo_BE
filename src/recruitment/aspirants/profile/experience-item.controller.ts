@@ -41,10 +41,8 @@ interface CustomRequest extends Request {
 export class ExperienceItemController {
   constructor(private readonly experienceItemService: ExperienceItemService) {}
 
-  // =========================================================================
   // 1. CREAR
-  // =========================================================================
-
+ 
   /**
    * POST /api/recruitment/aspirants/experience
    * Agrega un nuevo registro de experiencia al perfil del aspirante autenticado.
@@ -58,9 +56,7 @@ export class ExperienceItemController {
     return this.experienceItemService.create(userId, createExperienceItemDto);
   }
 
-  // =========================================================================
   // 2. LEER
-  // =========================================================================
 
   /**
    * GET /api/recruitment/aspirants/experience
@@ -74,10 +70,8 @@ export class ExperienceItemController {
     return this.experienceItemService.findAllByAspirant(userId);
   }
 
-  // =========================================================================
   // 3. ACTUALIZAR Y ELIMINAR
-  // =========================================================================
-
+  
   /**
    * PUT /api/recruitment/aspirants/experience/:id
    * Actualiza un registro de experiencia específico, verificando la propiedad.

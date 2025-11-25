@@ -2,13 +2,13 @@ import { IsString, IsNotEmpty, IsInt, Min, Max } from 'class-validator';
 import { Type } from 'class-transformer';
 import { PartialType } from '@nestjs/mapped-types';
 
-// La definición base de la habilidad (tomada de tu profile.dto)
+// La definición base de la habilidad 
 export class BaseSkillItemDto {
   @IsNotEmpty()
   @IsString()
   name: string;
 
-  // Tu entidad SkillItem no tiene 'category', pero lo mantengo aquí por si lo agregas.
+  // La entidad SkillItem no tiene 'category'
   @IsNotEmpty()
   @IsString()
   category: string;

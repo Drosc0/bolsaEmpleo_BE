@@ -35,9 +35,7 @@ export class SkillItem {
   })
   level: SkillLevel;
 
-  // ===========
   // RELACIONES
-  // ===========
 
   // Clave foránea que se usó en ProfileService para el create/update
   @Column()
@@ -48,5 +46,5 @@ export class SkillItem {
     onDelete: 'CASCADE', // Si el perfil se elimina, se elimina la habilidad
   })
   @JoinColumn({ name: 'profileId' })
-  profile: AspirantProfile; // ✅ La propiedad inversa que usa AspirantProfile y ProfileService
+  profile: AspirantProfile;
 }

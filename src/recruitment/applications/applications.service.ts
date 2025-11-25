@@ -23,9 +23,7 @@ export class ApplicationsService {
     private aspirantProfileRepository: Repository<AspirantProfile>,
   ) {}
 
-  // =========================================================================
   // LÓGICA DE POSTULACIÓN (ASPIRANTE)
-  // =========================================================================
 
   /**
    * Crea una nueva postulación para un aspirante.
@@ -104,7 +102,7 @@ export class ApplicationsService {
       return [];
     }
 
-    // USO CORRECTO DE QUERYBUILDER para buscar por ID de aspirante y cargar relaciones
+    // para buscar por ID de aspirante y cargar relaciones
     return this.applicationRepository
       .createQueryBuilder('app')
       .where('app.aspirantId = :id', { id: aspirantProfile.id })
@@ -113,15 +111,12 @@ export class ApplicationsService {
       .getMany();
   }
 
-  // =========================================================================
   // LÓGICA DE GESTIÓN (EMPRESA)
-  // =========================================================================
 
   /**
    * Obtiene todas las postulaciones para las ofertas de la empresa del usuario.
    */
   async findAllByCompany(userId: number): Promise<Application[]> {
-    // Nota: Asumimos que la entidad CompanyProfile tiene una relación OneToOne con User.
     // Usamos un QueryBuilder para una búsqueda más eficiente y segura.
     try {
       const applications = await this.applicationRepository

@@ -28,9 +28,7 @@ export class ExperienceItem {
   @Column({ type: 'text', nullable: true })
   description: string | null;
 
-  // ===========
   // RELACIONES
-  // ===========
 
   // Clave foránea que se usó en ProfileService para el create/update
   @Column()

@@ -13,7 +13,7 @@ import { JobOffer } from '../../companies/job-offers/job-offer.entity';
 export enum ApplicationStatus {
   // eslint-disable-next-line prettier/prettier
   PENDING = 'PENDING',     // Inicializado como PENDING (para el default)
-  APPLIED = 'APPLIED', // Postulado (Se puede usar como alias de PENDING)
+  APPLIED = 'APPLIED', // Postulado 
   IN_REVIEW = 'IN_REVIEW', // En Revisión
   INTERVIEW = 'INTERVIEW', // Entrevista
   HIRED = 'HIRED', // Contratado
@@ -43,7 +43,7 @@ export class Application {
   @Column({ type: 'text', nullable: true })
   internalNote: string | null;
 
-  // --- RELACIONES N:1 ---
+  // RELACIONES N:1
 
   // 1. Relación con el Perfil del Aspirante
   @ManyToOne(() => AspirantProfile, (profile) => profile.applications, {

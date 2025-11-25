@@ -47,8 +47,6 @@ export class ProfileService {
       const newProfile = this.profileRepository.create({
         userId: user.id,
         email: user.email,
-        // Añade aquí cualquier otro campo NO NULO que deba tener un valor por defecto.
-        // Ej: phone: null, city: null, etc.
       });
 
       return await this.profileRepository.save(newProfile);

@@ -18,9 +18,8 @@ import { UserRole } from 'src/user/user.entity';
 // Interfaz para tipar el objeto de solicitud con el usuario
 interface CustomRequest extends Request {
   user: {
-    id: number; // Suponemos que el ID del usuario en el token es un número
+    id: number; 
     role: UserRole;
-    // ... otras propiedades adjuntadas por JwtStrategy
   };
 }
 

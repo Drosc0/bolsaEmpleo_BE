@@ -5,19 +5,19 @@ import { PartialType } from '@nestjs/mapped-types';
 export class CreateCompanyProfileDto {
   @IsNotEmpty()
   @IsString()
-  name: string; // Nombre legal o comercial de la empresa
+  name: string; 
 
   @IsOptional()
   @IsString()
-  description?: string; // Descripción de la empresa
+  description?: string;
 
   @IsOptional()
   @IsUrl()
-  websiteUrl?: string; // Sitio web oficial
+  websiteUrl?: string; 
 
   @IsOptional()
   @IsString()
-  address?: string; // Dirección principal o sede
+  address?: string;
 }
 
 // DTO para actualizar el perfil

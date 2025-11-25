@@ -22,7 +22,7 @@ import { Public } from 'src/auth/decorators/public.decorator';
 // Interfaz para tipar el objeto de solicitud con el usuario adjunto por el JwtAuthGuard
 interface CustomRequest extends Request {
   user: {
-    id: number; // ID del usuario autenticado
+    id: number; 
     role: UserRole;
   };
 }
@@ -31,10 +31,8 @@ interface CustomRequest extends Request {
 export class JobOffersController {
   constructor(private readonly jobOffersService: JobOffersService) { }
 
-  // =========================================================================
   // RUTAS PÚBLICAS (No requieren autenticación)
-  // =========================================================================
-
+ 
   @Public()
   @Get()
   async findAll() {
@@ -47,10 +45,8 @@ export class JobOffersController {
     return this.jobOffersService.findOne(id);
   }
 
-  // =========================================================================
   // RUTAS PRIVADAS (Requieren Autenticación y Rol 'empresa')
-  // =========================================================================
-
+ 
   @UseGuards(JwtAuthGuard, RolesGuard) // Aplicar ambos guardias
   @Roles(UserRole.EMPRESA) // Restringir solo a empresas
   @Post()
@@ -58,7 +54,6 @@ export class JobOffersController {
     @Req() req: CustomRequest,
     @Body() createJobOfferDto: CreateJobOfferDto,
   ) {
-    // req.user ya está disponible
     const userId = req.user.id;
     return this.jobOffersService.create(userId, createJobOfferDto);
   }

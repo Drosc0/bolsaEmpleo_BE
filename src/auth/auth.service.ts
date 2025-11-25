@@ -30,7 +30,7 @@ export class AuthService {
     private readonly companyProfileService: CompanyProfileService,
   ) {}
 
-  // --- REGISTRO (MODIFICADO para pasar email y companyName al perfil) ---
+  //REGISTRO (MODIFICADO para pasar email y companyName al perfil)
   async register(registerDto: RegisterDto): Promise<AuthResult> {
     const { email, password, role } = registerDto;
 
@@ -55,7 +55,7 @@ export class AuthService {
     try {
       const savedUser = await this.usersRepository.save(newUser);
 
-      // PASO CRÍTICO AÑADIDO: Crear el perfil asociado según el rol
+      // Crear el perfil asociado según el rol
       if (savedUser.role === UserRole.ASPIRANTE) {
         // Llama al servicio para crear una entrada de perfil por defecto
         await this.aspirantProfileService.createDefault(savedUser);

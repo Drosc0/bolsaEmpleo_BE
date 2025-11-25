@@ -21,7 +21,7 @@ export class SkillItemDto {
 
   @IsNotEmpty()
   @IsString()
-  category: string; // Ej: Lenguaje, Framework, Herramienta
+  category: string;
 
   @IsNotEmpty()
   @IsInt()
@@ -54,7 +54,7 @@ export class ExperienceItemDto {
   description?: string;
 }
 
-// --- 2. DTO Principal de Creación (Obligatorio) ---
+// 2. DTO Principal de Creación (Obligatorio)
 
 export class CreateProfileDto {
   @IsNotEmpty()
@@ -91,7 +91,7 @@ export class CreateProfileDto {
   experience?: ExperienceItemDto[];
 }
 
-// --- 3. DTO Principal de Actualización (Opcional) ---
+// 3. DTO Principal de Actualización (Opcional)
 
 /**
  * Hereda de CreateProfileDto, haciendo TODAS sus propiedades opcionales.

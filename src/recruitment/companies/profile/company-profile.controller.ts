@@ -27,20 +27,18 @@ import { UserRole } from '../../../user/user.entity';
 // Interfaz para tipar el objeto de solicitud con el usuario adjunto
 interface CustomRequest extends Request {
   user: {
-    id: number; // ID del usuario autenticado
+    id: number; 
     role: UserRole;
   };
 }
 
 @Controller('recruitment/company-profile')
 @UseGuards(JwtAuthGuard, RolesGuard) // Aplicamos guardias a todo el controlador
-@Roles(UserRole.EMPRESA) // Restringimos el acceso de la clase al rol EMPRESA
+@Roles(UserRole.EMPRESA) // Restringe el acceso de la clase al rol EMPRESA
 export class CompanyProfileController {
   constructor(private readonly companyProfileService: CompanyProfileService) {}
 
-  // ==========================================================
   // 1. GESTIÓN DEL PROPIO PERFIL (Requiere Auth + Rol EMPRESA)
-  // ==========================================================
 
   /**
    * POST /api/recruitment/company-profile

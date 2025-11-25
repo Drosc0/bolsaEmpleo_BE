@@ -32,7 +32,7 @@ export class JobOffer {
   @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   createdAt: Date;
 
-  // --- RELACIONES ---
+  //RELACIONES
 
   // Relación N:1: Muchas ofertas pertenecen a una empresa
   @ManyToOne(() => CompanyProfile, (company) => company.offers)

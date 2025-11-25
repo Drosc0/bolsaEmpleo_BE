@@ -19,7 +19,7 @@ export class CreateExperienceItemDto {
 
   @IsNotEmpty()
   @IsDateString()
-  startDate: string; // Se recomienda usar string ISO en DTOs
+  startDate: string; 
 
   @IsOptional()
   @IsDateString()

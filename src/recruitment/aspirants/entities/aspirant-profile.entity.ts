@@ -46,7 +46,7 @@ export class AspirantProfile {
   @Column({ type: 'varchar', length: 255, nullable: true })
   cvUrl?: string;
 
-  // =========== RELACIONES ===========
+  // RELACIONES
   @Column({ unique: true })
   userId: number;
 

@@ -48,7 +48,6 @@ export class SkillItemController {
     @Req() req: CustomRequest,
     @Body() createSkillDto: CreateSkillItemDto,
   ): Promise<SkillItem> {
-    // ⬅️ Tipo de retorno explícito
     const userId = req.user.id;
     return this.skillItemService.create(userId, createSkillDto);
   }
@@ -63,7 +62,6 @@ export class SkillItemController {
     @Param('id', ParseIntPipe) skillId: number,
     @Body() updateSkillDto: UpdateSkillItemDto,
   ): Promise<SkillItem> {
-    // ⬅️ Tipo de retorno explícito
     const userId = req.user.id;
     return this.skillItemService.update(userId, skillId, updateSkillDto);
   }
@@ -78,7 +76,6 @@ export class SkillItemController {
     @Req() req: CustomRequest,
     @Param('id', ParseIntPipe) skillId: number,
   ): Promise<void> {
-    // ⬅️ Tipo de retorno explícito
     const userId = req.user.id;
     return this.skillItemService.remove(userId, skillId);
   }

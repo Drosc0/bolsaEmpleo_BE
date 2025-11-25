@@ -22,10 +22,8 @@ export class ExperienceItemService {
     private profileService: ProfileService,
   ) {}
 
-  // =========================================================================
-  // ✅ MÉTODO AÑADIDO
-  // =========================================================================
-
+  // MÉTODO AÑADIDO
+ 
   /**
    * Encuentra todos los registros de experiencia laboral para un usuario dado.
    */
@@ -55,10 +53,8 @@ export class ExperienceItemService {
     }
   }
 
-  // =========================================================================
   // MÉTODOS EXISTENTES (create, update, remove)
-  // =========================================================================
-
+  
   /**
    * Crea un ítem de experiencia laboral para el perfil del usuario.
    */

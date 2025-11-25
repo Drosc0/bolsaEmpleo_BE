@@ -35,10 +35,8 @@ interface CustomRequest extends Request {
 export class ApplicationsController {
   constructor(private readonly applicationsService: ApplicationsService) {}
 
-  // =========================================================================
   // 1. RUTA PARA ASPIRANTES
-  // =========================================================================
-
+ 
   /**
    * POST /api/recruitment/applications
    * Permite a un aspirante aplicar a una oferta de trabajo específica.
@@ -55,10 +53,8 @@ export class ApplicationsController {
       createApplicationDto.jobOfferId,
     );
   }
-
-  // =========================================================================
+ 
   // 2. RUTAS PARA EMPRESAS
-  // =========================================================================
 
   /**
    * GET /api/recruitment/applications/company
@@ -91,9 +87,7 @@ export class ApplicationsController {
     );
   }
 
-  // =========================================================================
   // 3. RUTA PARA ASPIRANTES (VER SUS POSTULACIONES)
-  // =========================================================================
 
   /**
    * GET /api/recruitment/applications/me

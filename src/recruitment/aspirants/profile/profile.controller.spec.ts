@@ -37,10 +37,8 @@ interface CustomRequest extends Request {
 export class ProfileController {
   constructor(private readonly profileService: ProfileService) {}
 
-  // =========================================================================
   // 1. CREACIÓN DEL PERFIL BASE
-  // =========================================================================
-
+  
   /**
    * POST /api/recruitment/aspirants/profile
    * Crea el perfil base del aspirante.
@@ -55,10 +53,8 @@ export class ProfileController {
     return this.profileService.create(userId, createProfileDto);
   }
 
-  // =========================================================================
   // 2. LECTURA DEL PERFIL COMPLETO (CV)
-  // =========================================================================
-
+ 
   /**
    * GET /api/recruitment/aspirants/profile
    * Obtiene el perfil completo (incluyendo habilidades y experiencia) del aspirante autenticado.
@@ -76,10 +72,8 @@ export class ProfileController {
     return profile;
   }
 
-  // =========================================================================
   // 3. ACTUALIZACIÓN Y ELIMINACIÓN
-  // =========================================================================
-
+ 
   /**
    * PUT /api/recruitment/aspirants/profile
    * Actualiza los campos del perfil base y las colecciones anidadas.

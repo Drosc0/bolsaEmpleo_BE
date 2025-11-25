@@ -34,7 +34,6 @@ export class AuthController {
   /**
    * Ruta para iniciar sesión.
    * POST /auth/login
-   * MODIFICADO: Ahora devuelve el token, userId y role.
    */
   @Public()
   @Post('login')
