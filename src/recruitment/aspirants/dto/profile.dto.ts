@@ -19,16 +19,12 @@ export class SkillItemDto {
   @IsString()
   name: string;
 
-  @IsNotEmpty()
-  @IsString()
-  category: string;
-
-  @IsNotEmpty()
+  @IsOptional()
   @IsInt()
   @Min(1)
   @Max(5)
   @Type(() => Number) // Asegura que el valor sea tratado como número entero
-  level: number;
+  level?: number;
 }
 
 export class ExperienceItemDto {

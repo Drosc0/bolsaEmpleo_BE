@@ -108,7 +108,7 @@ export class ProfileService {
         newProfile.skills = skills.map((sDto: SkillItemDto) => {
           const skillEntityData = {
             skillName: sDto.name, // Mapeo de nombre
-            level: mapLevelToSkillLevel(sDto.level), // Mapeo de nivel
+            level: mapLevelToSkillLevel(sDto.level ?? 2), // Mapeo de nivel (default 2=BASIC)
           };
           return this.skillRepository.create({
             ...skillEntityData,
@@ -162,7 +162,7 @@ export class ProfileService {
         profileToUpdate.skills = skills.map((s: SkillItemDto) => {
           const skillEntityData = {
             skillName: s.name,
-            level: mapLevelToSkillLevel(s.level),
+            level: mapLevelToSkillLevel(s.level ?? 2),
           };
           return this.skillRepository.create({
             ...skillEntityData,

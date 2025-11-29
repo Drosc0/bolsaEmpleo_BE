@@ -17,7 +17,7 @@ export class SkillItemService {
     @InjectRepository(SkillItem)
     private skillRepository: Repository<SkillItem>,
     private profileService: ProfileService,
-  ) {}
+  ) { }
 
   /**
    * Mapeo de nivel numérico (DTO) a nivel Enum (Entidad)
@@ -42,7 +42,7 @@ export class SkillItemService {
     try {
       const newSkill = this.skillRepository.create({
         skillName: dto.name, // Mapeo de DTO.name a Entity.skillName
-        level: this.mapLevelToSkillLevel(dto.level), // Mapeo de nivel
+        level: this.mapLevelToSkillLevel(dto.level ?? 2), // Mapeo de nivel (default 2=BASIC)
         profileId: profile.id,
       });
 
