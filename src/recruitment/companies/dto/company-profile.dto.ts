@@ -18,6 +18,10 @@ export class CreateCompanyProfileDto {
   @IsOptional()
   @IsString()
   logoUrl?: string;
+
+  @IsOptional()
+  @IsString()
+  location?: string;
 }
 
 // DTO para actualizar el perfil

@@ -17,7 +17,7 @@ export class SkillItemService {
     @InjectRepository(SkillItem)
     private skillRepository: Repository<SkillItem>,
     private profileService: ProfileService,
-  ) { }
+  ) {}
 
   /**
    * Mapeo de nivel numérico (DTO) a nivel Enum (Entidad)

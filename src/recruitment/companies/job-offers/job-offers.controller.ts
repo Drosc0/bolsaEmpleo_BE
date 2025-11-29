@@ -33,7 +33,7 @@ export class JobOffersController {
   constructor(
     private readonly jobOffersService: JobOffersService,
     private readonly applicationsService: ApplicationsService,
-  ) { }
+  ) {}
 
   // RUTAS PÚBLICAS (No requieren autenticación)
 

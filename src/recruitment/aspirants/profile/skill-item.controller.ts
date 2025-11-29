@@ -36,7 +36,7 @@ interface CustomRequest extends Request {
 @Roles(UserRole.ASPIRANTE) // Solo aspirantes pueden gestionar sus habilidades
 export class SkillItemController {
   // El inyector del constructor asegura que el tipo sea explícito
-  constructor(private readonly skillItemService: SkillItemService) { }
+  constructor(private readonly skillItemService: SkillItemService) {}
 
   /**
    * POST /api/recruitment/aspirants/skills

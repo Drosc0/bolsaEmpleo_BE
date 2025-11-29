@@ -12,12 +12,15 @@ import { JobOffersController } from './job-offers/job-offers.controller';
 import { CompanyProfileService } from './profile/company-profile.service';
 import { JobOffersService } from './job-offers/job-offers.service';
 import { JobOffer } from './job-offers/job-offer.entity';
-// ... otros imports
 
 @Module({
-  imports: [TypeOrmModule.forFeature([CompanyProfile, JobOffer]), UserModule, ApplicationsModule],
+  imports: [
+    TypeOrmModule.forFeature([CompanyProfile, JobOffer]),
+    UserModule,
+    ApplicationsModule,
+  ],
   controllers: [CompanyProfileController, JobOffersController],
   providers: [CompanyProfileService, JobOffersService],
   exports: [CompanyProfileService, JobOffersService, TypeOrmModule],
 })
-export class CompaniesModule { }
+export class CompaniesModule {}

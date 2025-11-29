@@ -39,7 +39,7 @@ interface CustomRequest extends Request {
 @UseGuards(JwtAuthGuard, RolesGuard) // Aplicar guardias de autenticación y roles
 @Roles(UserRole.ASPIRANTE) // Restringir solo a aspirantes
 export class ExperienceItemController {
-  constructor(private readonly experienceItemService: ExperienceItemService) { }
+  constructor(private readonly experienceItemService: ExperienceItemService) {}
 
   // 1. CREAR
 

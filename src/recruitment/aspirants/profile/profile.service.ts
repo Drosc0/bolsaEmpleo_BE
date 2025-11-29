@@ -35,7 +35,7 @@ export class ProfileService {
     private experienceRepository: Repository<ExperienceItem>,
     @InjectRepository(SkillItem)
     private skillRepository: Repository<SkillItem>,
-  ) { }
+  ) {}
 
   /**
    * Crea un perfil vacío usando solo el objeto User.

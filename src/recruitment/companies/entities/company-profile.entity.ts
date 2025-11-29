@@ -30,6 +30,9 @@ export class CompanyProfile {
   @Column({ type: 'varchar', length: 255, nullable: true })
   logoUrl: string | null;
 
+  @Column({ type: 'varchar', length: 255, nullable: true })
+  location: string | null;
+
   // 1. Relación 1:1 con el Usuario (Foreign Key)
   @Column({ unique: true })
   userId: number;

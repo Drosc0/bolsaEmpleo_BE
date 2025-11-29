@@ -9,7 +9,7 @@ export class UserService {
     // Inyecta el repositorio de la entidad User
     @InjectRepository(User)
     private usersRepository: Repository<User>,
-  ) { }
+  ) {}
 
   // Usado por la AuthLocalStrategy y el Login
   async findOneByEmail(email: string): Promise<User | null> {
@@ -58,7 +58,7 @@ export class UserService {
   }
 
   async countByRole(role: string): Promise<number> {
-    // Nota: Asegúrate de que el rol coincida con el enum UserRole
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     return this.usersRepository.count({ where: { role: role as any } });
   }
 

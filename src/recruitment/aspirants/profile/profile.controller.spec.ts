@@ -35,7 +35,7 @@ interface CustomRequest extends Request {
 @UseGuards(JwtAuthGuard, RolesGuard)
 @Roles(UserRole.ASPIRANTE) // Solo los aspirantes pueden gestionar su perfil
 export class ProfileController {
-  constructor(private readonly profileService: ProfileService) { }
+  constructor(private readonly profileService: ProfileService) {}
 
   // 1. CREACIÓN DEL PERFIL BASE
 

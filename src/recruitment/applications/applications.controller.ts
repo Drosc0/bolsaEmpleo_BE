@@ -33,7 +33,7 @@ interface CustomRequest extends Request {
 @Controller('recruitment/applications')
 @UseGuards(JwtAuthGuard, RolesGuard) // Aplicamos guardias globalmente al controlador
 export class ApplicationsController {
-  constructor(private readonly applicationsService: ApplicationsService) { }
+  constructor(private readonly applicationsService: ApplicationsService) {}
 
   // 1. RUTA PARA ASPIRANTES
 

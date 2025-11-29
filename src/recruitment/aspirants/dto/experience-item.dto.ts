@@ -19,7 +19,7 @@ export class CreateExperienceItemDto {
 
   @IsNotEmpty()
   @IsDateString()
-  startDate: string; 
+  startDate: string;
 
   @IsOptional()
   @IsDateString()

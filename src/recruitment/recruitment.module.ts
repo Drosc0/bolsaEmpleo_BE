@@ -13,4 +13,4 @@ import { UserModule } from '../user/user.module';
   providers: [],
   exports: [AspirantsModule, CompaniesModule, ApplicationsModule],
 })
-export class RecruitmentModule { }
+export class RecruitmentModule {}

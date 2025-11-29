@@ -21,7 +21,7 @@ export class ApplicationsService {
     private jobOfferRepository: Repository<JobOffer>,
     @InjectRepository(AspirantProfile)
     private aspirantProfileRepository: Repository<AspirantProfile>,
-  ) { }
+  ) {}
 
   // LÓGICA DE POSTULACIÓN (ASPIRANTE)
 

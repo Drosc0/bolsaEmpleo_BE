@@ -15,6 +15,9 @@ import { PartialType } from '@nestjs/mapped-types'; // Necesario para crear DTOs
 // --- 1. DTOs Anidados (Experiencia y Habilidades) ---
 
 export class SkillItemDto {
+  @IsOptional()
+  id?: number;
+
   @IsNotEmpty()
   @IsString()
   name: string;
@@ -28,6 +31,9 @@ export class SkillItemDto {
 }
 
 export class ExperienceItemDto {
+  @IsOptional()
+  id?: number;
+
   @IsNotEmpty()
   @IsString()
   title: string;
@@ -113,4 +119,4 @@ export class CreateProfileDto {
  * Hereda de CreateProfileDto, haciendo TODAS sus propiedades opcionales.
  * Esto resuelve los errores de sobreescritura y tipado 'string | undefined'.
  */
-export class UpdateProfileDto extends PartialType(CreateProfileDto) { }
+export class UpdateProfileDto extends PartialType(CreateProfileDto) {}

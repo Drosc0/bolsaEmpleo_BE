@@ -27,7 +27,7 @@ import { UserRole } from '../../../user/user.entity';
 // Interfaz para tipar el objeto de solicitud con el usuario adjunto
 interface CustomRequest extends Request {
   user: {
-    id: number; 
+    id: number;
     role: UserRole;
   };
 }

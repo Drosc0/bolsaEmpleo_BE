@@ -28,7 +28,7 @@ interface CustomRequest extends Request {
 @UseGuards(JwtAuthGuard, RolesGuard)
 @Roles(UserRole.ASPIRANTE) // Restringe TODO el controlador solo al rol 'aspirante'
 export class ProfileController {
-  constructor(private readonly profileService: ProfileService) { }
+  constructor(private readonly profileService: ProfileService) {}
 
   // 1. OBTENER PERFIL (GET /api/recruitment/profile)
   // El userId se extrae automáticamente del token por el JwtAuthGuard

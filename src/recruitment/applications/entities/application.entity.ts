@@ -13,7 +13,7 @@ import { JobOffer } from '../../companies/job-offers/job-offer.entity';
 export enum ApplicationStatus {
   // eslint-disable-next-line prettier/prettier
   PENDING = 'PENDING',     // Inicializado como PENDING (para el default)
-  APPLIED = 'APPLIED', // Postulado 
+  APPLIED = 'APPLIED', // Postulado
   IN_REVIEW = 'IN_REVIEW', // En Revisión
   INTERVIEW = 'INTERVIEW', // Entrevista
   HIRED = 'HIRED', // Contratado

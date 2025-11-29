@@ -1,8 +1,15 @@
-import { IsString, IsNotEmpty, IsInt, Min, Max, IsOptional } from 'class-validator';
+import {
+  IsString,
+  IsNotEmpty,
+  IsInt,
+  Min,
+  Max,
+  IsOptional,
+} from 'class-validator';
 import { Type } from 'class-transformer';
 import { PartialType } from '@nestjs/mapped-types';
 
-// La definición base de la habilidad 
+// La definición base de la habilidad
 export class BaseSkillItemDto {
   @IsNotEmpty()
   @IsString()
@@ -17,7 +24,7 @@ export class BaseSkillItemDto {
 }
 
 // DTO para Crear una Habilidad (todos los campos son obligatorios)
-export class CreateSkillItemDto extends BaseSkillItemDto { }
+export class CreateSkillItemDto extends BaseSkillItemDto {}
 
 // DTO para Actualizar una Habilidad (todos los campos son opcionales)
 export class UpdateSkillItemDto extends PartialType(BaseSkillItemDto) {
