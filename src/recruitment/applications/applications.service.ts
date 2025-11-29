@@ -21,7 +21,7 @@ export class ApplicationsService {
     private jobOfferRepository: Repository<JobOffer>,
     @InjectRepository(AspirantProfile)
     private aspirantProfileRepository: Repository<AspirantProfile>,
-  ) {}
+  ) { }
 
   // LÓGICA DE POSTULACIÓN (ASPIRANTE)
 
@@ -132,6 +132,27 @@ export class ApplicationsService {
       return applications;
     } catch (error) {
       console.error('Error al obtener postulaciones de la empresa:', error);
+      throw new InternalServerErrorException(
+        'Error al obtener las postulaciones.',
+      );
+    }
+  }
+
+  /**
+   * Obtiene todas las postulaciones para una oferta específica.
+   */
+  async findAllByOffer(offerId: number): Promise<Application[]> {
+    try {
+      const applications = await this.applicationRepository
+        .createQueryBuilder('app')
+        .where('app.jobOfferId = :offerId', { offerId })
+        .leftJoinAndSelect('app.aspirantProfile', 'aspirant')
+        .leftJoinAndSelect('aspirant.user', 'aspirantUser')
+        .getMany();
+
+      return applications;
+    } catch (error) {
+      console.error('Error al obtener postulaciones de la oferta:', error);
       throw new InternalServerErrorException(
         'Error al obtener las postulaciones.',
       );

@@ -66,7 +66,7 @@ describe('CompanyProfileService', () => {
     describe('create', () => {
         it('should create a profile if user is company and has no profile', async () => {
             const userId = 1;
-            const createDto = { name: 'New Company', description: 'Desc', websiteUrl: 'http://web.com', address: 'Address' };
+            const createDto = { companyName: 'New Company', description: 'Desc', website: 'http://web.com', logoUrl: 'http://logo.com' };
             const user = { id: userId, role: UserRole.EMPRESA };
 
             mockCompanyProfileRepository.findOneBy.mockResolvedValue(null);

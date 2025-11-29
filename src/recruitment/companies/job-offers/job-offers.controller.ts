@@ -12,6 +12,7 @@ import {
 } from '@nestjs/common';
 import { JobOffersService } from './job-offers.service';
 import { CreateJobOfferDto, UpdateJobOfferDto } from './dto/job-offer.dto';
+import { ApplicationsService } from '../../applications/applications.service';
 //autenticacion
 import { JwtAuthGuard } from '../../../auth/guards/jwt-auth.guard';
 import { RolesGuard } from '../../../auth/guards/roles.guard';
@@ -29,7 +30,10 @@ interface CustomRequest extends Request {
 
 @Controller('recruitment/offers')
 export class JobOffersController {
-  constructor(private readonly jobOffersService: JobOffersService) { }
+  constructor(
+    private readonly jobOffersService: JobOffersService,
+    private readonly applicationsService: ApplicationsService,
+  ) { }
 
   // RUTAS PÚBLICAS (No requieren autenticación)
 
@@ -43,6 +47,12 @@ export class JobOffersController {
   @Get(':id')
   async findOne(@Param('id', ParseIntPipe) id: number) {
     return this.jobOffersService.findOne(id);
+  }
+
+  @Public()
+  @Get(':id/applications')
+  async findApplicationsByOffer(@Param('id', ParseIntPipe) id: number) {
+    return this.applicationsService.findAllByOffer(id);
   }
 
   // RUTAS PRIVADAS (Requieren Autenticación y Rol 'empresa')

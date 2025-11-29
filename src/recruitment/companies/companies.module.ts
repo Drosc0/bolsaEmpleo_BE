@@ -3,6 +3,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 
 // Importar el nuevo módulo de Usuario
 import { UserModule } from '../../user/user.module';
+import { ApplicationsModule } from '../applications/applications.module';
 
 // Perfil de la Empresa
 import { CompanyProfile } from './entities/company-profile.entity';
@@ -14,9 +15,9 @@ import { JobOffer } from './job-offers/job-offer.entity';
 // ... otros imports
 
 @Module({
-  imports: [TypeOrmModule.forFeature([CompanyProfile, JobOffer]), UserModule],
+  imports: [TypeOrmModule.forFeature([CompanyProfile, JobOffer]), UserModule, ApplicationsModule],
   controllers: [CompanyProfileController, JobOffersController],
   providers: [CompanyProfileService, JobOffersService],
   exports: [CompanyProfileService, JobOffersService, TypeOrmModule],
 })
-export class CompaniesModule {}
+export class CompaniesModule { }

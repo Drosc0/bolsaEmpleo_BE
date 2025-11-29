@@ -57,9 +57,13 @@ export class ExperienceItemDto {
 // 2. DTO Principal de Creación (Obligatorio)
 
 export class CreateProfileDto {
-  @IsNotEmpty()
+  @IsOptional()
   @IsString()
-  name: string;
+  firstName?: string;
+
+  @IsOptional()
+  @IsString()
+  lastName?: string;
 
   @IsNotEmpty()
   @IsEmail()
@@ -71,11 +75,27 @@ export class CreateProfileDto {
 
   @IsOptional()
   @IsString()
-  summary?: string;
+  bio?: string;
 
   @IsOptional()
   @IsString()
-  cvUrl?: string; // URL del CV en almacenamiento externo
+  linkedinUrl?: string;
+
+  @IsOptional()
+  @IsString()
+  portfolioUrl?: string;
+
+  @IsOptional()
+  @IsString()
+  currentJobTitle?: string;
+
+  @IsOptional()
+  @IsString()
+  photoUrl?: string;
+
+  @IsOptional()
+  @IsString()
+  cvUrl?: string;
 
   // Listas anidadas
   @IsOptional()
@@ -97,4 +117,4 @@ export class CreateProfileDto {
  * Hereda de CreateProfileDto, haciendo TODAS sus propiedades opcionales.
  * Esto resuelve los errores de sobreescritura y tipado 'string | undefined'.
  */
-export class UpdateProfileDto extends PartialType(CreateProfileDto) {}
+export class UpdateProfileDto extends PartialType(CreateProfileDto) { }
