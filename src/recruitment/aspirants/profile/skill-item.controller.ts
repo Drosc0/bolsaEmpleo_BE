@@ -18,10 +18,10 @@ import { CreateSkillItemDto, UpdateSkillItemDto } from '../dto/skill-item.dto'; 
 import { SkillItem } from '../entities/skill-item.entity';
 
 // Autenticación y Roles
-import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
-import { RolesGuard } from 'src/auth/guards/roles.guard';
-import { Roles } from 'src/auth/decorators/roles.decorator';
-import { UserRole } from 'src/user/user.entity';
+import { JwtAuthGuard } from '../../../auth/guards/jwt-auth.guard';
+import { RolesGuard } from '../../../auth/guards/roles.guard';
+import { Roles } from '../../../auth/decorators/roles.decorator';
+import { UserRole } from '../../../user/user.entity';
 
 // Interfaz para tipar el objeto de solicitud con el usuario adjunto
 interface CustomRequest extends Request {
@@ -36,7 +36,7 @@ interface CustomRequest extends Request {
 @Roles(UserRole.ASPIRANTE) // Solo aspirantes pueden gestionar sus habilidades
 export class SkillItemController {
   // El inyector del constructor asegura que el tipo sea explícito
-  constructor(private readonly skillItemService: SkillItemService) {}
+  constructor(private readonly skillItemService: SkillItemService) { }
 
   /**
    * POST /api/recruitment/aspirants/skills

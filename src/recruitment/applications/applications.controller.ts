@@ -17,10 +17,10 @@ import {
 } from './dto/application.dto';
 import { Application } from './entities/application.entity';
 // Autenticación y Roles
-import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
-import { RolesGuard } from 'src/auth/guards/roles.guard';
-import { Roles } from 'src/auth/decorators/roles.decorator';
-import { UserRole } from 'src/user/user.entity';
+import { JwtAuthGuard } from '../../auth/guards/jwt-auth.guard';
+import { RolesGuard } from '../../auth/guards/roles.guard';
+import { Roles } from '../../auth/decorators/roles.decorator';
+import { UserRole } from '../../user/user.entity';
 
 // Interfaz para tipar el objeto de solicitud con el usuario adjunto por el JwtAuthGuard
 interface CustomRequest extends Request {
@@ -33,10 +33,10 @@ interface CustomRequest extends Request {
 @Controller('recruitment/applications')
 @UseGuards(JwtAuthGuard, RolesGuard) // Aplicamos guardias globalmente al controlador
 export class ApplicationsController {
-  constructor(private readonly applicationsService: ApplicationsService) {}
+  constructor(private readonly applicationsService: ApplicationsService) { }
 
   // 1. RUTA PARA ASPIRANTES
- 
+
   /**
    * POST /api/recruitment/applications
    * Permite a un aspirante aplicar a una oferta de trabajo específica.
@@ -53,7 +53,7 @@ export class ApplicationsController {
       createApplicationDto.jobOfferId,
     );
   }
- 
+
   // 2. RUTAS PARA EMPRESAS
 
   /**

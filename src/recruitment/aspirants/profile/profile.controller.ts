@@ -10,15 +10,15 @@ import {
 } from '@nestjs/common';
 import { ProfileService } from './profile.service';
 import { CreateProfileDto, UpdateProfileDto } from '../dto/profile.dto';
-import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
-import { RolesGuard } from 'src/auth/guards/roles.guard';
-import { Roles } from 'src/auth/decorators/roles.decorator';
-import { UserRole } from 'src/user/user.entity';
+import { JwtAuthGuard } from '../../../auth/guards/jwt-auth.guard';
+import { RolesGuard } from '../../../auth/guards/roles.guard';
+import { Roles } from '../../../auth/decorators/roles.decorator';
+import { UserRole } from '../../../user/user.entity';
 
 // Interfaz para tipar el objeto de solicitud con el usuario
 interface CustomRequest extends Request {
   user: {
-    id: number; 
+    id: number;
     role: UserRole;
   };
 }
@@ -28,7 +28,7 @@ interface CustomRequest extends Request {
 @UseGuards(JwtAuthGuard, RolesGuard)
 @Roles(UserRole.ASPIRANTE) // Restringe TODO el controlador solo al rol 'aspirante'
 export class ProfileController {
-  constructor(private readonly profileService: ProfileService) {}
+  constructor(private readonly profileService: ProfileService) { }
 
   // 1. OBTENER PERFIL (GET /api/recruitment/profile)
   // El userId se extrae automáticamente del token por el JwtAuthGuard

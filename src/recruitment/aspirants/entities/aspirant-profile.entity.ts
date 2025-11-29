@@ -8,7 +8,7 @@ import {
 } from 'typeorm';
 import { ExperienceItem } from './experience-item.entity';
 import { SkillItem } from './skill-item.entity';
-import { User } from 'src/user/user.entity';
+import { User } from '../../../user/user.entity';
 import { Application } from '../../applications/entities/application.entity';
 
 @Entity('aspirant_profiles')

@@ -18,10 +18,10 @@ import { CreateProfileDto, UpdateProfileDto } from '../dto/profile.dto';
 import { AspirantProfile } from '../entities/aspirant-profile.entity';
 
 // Autenticación y Roles
-import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
-import { RolesGuard } from 'src/auth/guards/roles.guard';
-import { Roles } from 'src/auth/decorators/roles.decorator';
-import { UserRole } from 'src/user/user.entity';
+import { JwtAuthGuard } from '../../../auth/guards/jwt-auth.guard';
+import { RolesGuard } from '../../../auth/guards/roles.guard';
+import { Roles } from '../../../auth/decorators/roles.decorator';
+import { UserRole } from '../../../user/user.entity';
 
 // Interfaz para tipar el objeto de solicitud con el usuario adjunto
 interface CustomRequest extends Request {
@@ -35,10 +35,10 @@ interface CustomRequest extends Request {
 @UseGuards(JwtAuthGuard, RolesGuard)
 @Roles(UserRole.ASPIRANTE) // Solo los aspirantes pueden gestionar su perfil
 export class ProfileController {
-  constructor(private readonly profileService: ProfileService) {}
+  constructor(private readonly profileService: ProfileService) { }
 
   // 1. CREACIÓN DEL PERFIL BASE
-  
+
   /**
    * POST /api/recruitment/aspirants/profile
    * Crea el perfil base del aspirante.
@@ -54,7 +54,7 @@ export class ProfileController {
   }
 
   // 2. LECTURA DEL PERFIL COMPLETO (CV)
- 
+
   /**
    * GET /api/recruitment/aspirants/profile
    * Obtiene el perfil completo (incluyendo habilidades y experiencia) del aspirante autenticado.
@@ -73,7 +73,7 @@ export class ProfileController {
   }
 
   // 3. ACTUALIZACIÓN Y ELIMINACIÓN
- 
+
   /**
    * PUT /api/recruitment/aspirants/profile
    * Actualiza los campos del perfil base y las colecciones anidadas.

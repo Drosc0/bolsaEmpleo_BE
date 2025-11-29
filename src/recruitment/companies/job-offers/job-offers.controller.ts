@@ -13,16 +13,16 @@ import {
 import { JobOffersService } from './job-offers.service';
 import { CreateJobOfferDto, UpdateJobOfferDto } from './dto/job-offer.dto';
 //autenticacion
-import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
-import { RolesGuard } from 'src/auth/guards/roles.guard';
-import { Roles } from 'src/auth/decorators/roles.decorator';
-import { UserRole } from 'src/user/user.entity';
-import { Public } from 'src/auth/decorators/public.decorator';
+import { JwtAuthGuard } from '../../../auth/guards/jwt-auth.guard';
+import { RolesGuard } from '../../../auth/guards/roles.guard';
+import { Roles } from '../../../auth/decorators/roles.decorator';
+import { UserRole } from '../../../user/user.entity';
+import { Public } from '../../../auth/decorators/public.decorator';
 
 // Interfaz para tipar el objeto de solicitud con el usuario adjunto por el JwtAuthGuard
 interface CustomRequest extends Request {
   user: {
-    id: number; 
+    id: number;
     role: UserRole;
   };
 }
@@ -32,7 +32,7 @@ export class JobOffersController {
   constructor(private readonly jobOffersService: JobOffersService) { }
 
   // RUTAS PÚBLICAS (No requieren autenticación)
- 
+
   @Public()
   @Get()
   async findAll() {
@@ -46,7 +46,7 @@ export class JobOffersController {
   }
 
   // RUTAS PRIVADAS (Requieren Autenticación y Rol 'empresa')
- 
+
   @UseGuards(JwtAuthGuard, RolesGuard) // Aplicar ambos guardias
   @Roles(UserRole.EMPRESA) // Restringir solo a empresas
   @Post()

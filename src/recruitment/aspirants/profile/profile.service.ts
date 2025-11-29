@@ -15,7 +15,7 @@ import {
   UpdateProfileDto,
   SkillItemDto,
 } from '../dto/profile.dto';
-import { User } from 'src/user/user.entity';
+import { User } from '../../../user/user.entity';
 
 // --- Función Auxiliar para mapear el nivel numérico a Enum/String ---
 const mapLevelToSkillLevel = (level: number): SkillLevel => {
@@ -35,7 +35,7 @@ export class ProfileService {
     private experienceRepository: Repository<ExperienceItem>,
     @InjectRepository(SkillItem)
     private skillRepository: Repository<SkillItem>,
-  ) {}
+  ) { }
 
   /**
    * Crea un perfil vacío usando solo el objeto User.

@@ -6,7 +6,7 @@ import {
   OneToMany,
 } from 'typeorm';
 import { CompanyProfile } from '../entities/company-profile.entity';
-import { Application } from 'src/recruitment/applications/entities/application.entity';
+import { Application } from '../../applications/entities/application.entity';
 // import { Application } from 'src/recruitment/applicants/entities/application.entity'; // La crearemos después
 
 @Entity('job_offers')

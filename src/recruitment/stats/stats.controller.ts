@@ -1,7 +1,7 @@
 import { Controller, Get } from '@nestjs/common';
-import { Public } from 'src/auth/decorators/public.decorator';
-import { UserService } from 'src/user/user.service';
-import { UserRole } from 'src/user/user.entity';
+import { Public } from '../../auth/decorators/public.decorator';
+import { UserService } from '../../user/user.service';
+import { UserRole } from '../../user/user.entity';
 
 @Controller('stats')
 export class StatsController {

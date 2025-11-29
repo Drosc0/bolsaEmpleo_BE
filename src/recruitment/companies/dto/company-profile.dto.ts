@@ -5,7 +5,7 @@ import { PartialType } from '@nestjs/mapped-types';
 export class CreateCompanyProfileDto {
   @IsNotEmpty()
   @IsString()
-  name: string; 
+  name: string;
 
   @IsOptional()
   @IsString()
@@ -13,7 +13,7 @@ export class CreateCompanyProfileDto {
 
   @IsOptional()
   @IsUrl()
-  websiteUrl?: string; 
+  websiteUrl?: string;
 
   @IsOptional()
   @IsString()

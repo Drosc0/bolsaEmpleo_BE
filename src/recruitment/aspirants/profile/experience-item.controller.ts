@@ -22,10 +22,10 @@ import {
 import { ExperienceItem } from '../entities/experience-item.entity';
 
 // Autenticación y Roles
-import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
-import { RolesGuard } from 'src/auth/guards/roles.guard';
-import { Roles } from 'src/auth/decorators/roles.decorator';
-import { UserRole } from 'src/user/user.entity';
+import { JwtAuthGuard } from '../../../auth/guards/jwt-auth.guard';
+import { RolesGuard } from '../../../auth/guards/roles.guard';
+import { Roles } from '../../../auth/decorators/roles.decorator';
+import { UserRole } from '../../../user/user.entity';
 
 // Interfaz para tipar el objeto de solicitud con el usuario adjunto
 interface CustomRequest extends Request {
@@ -39,10 +39,10 @@ interface CustomRequest extends Request {
 @UseGuards(JwtAuthGuard, RolesGuard) // Aplicar guardias de autenticación y roles
 @Roles(UserRole.ASPIRANTE) // Restringir solo a aspirantes
 export class ExperienceItemController {
-  constructor(private readonly experienceItemService: ExperienceItemService) {}
+  constructor(private readonly experienceItemService: ExperienceItemService) { }
 
   // 1. CREAR
- 
+
   /**
    * POST /api/recruitment/aspirants/experience
    * Agrega un nuevo registro de experiencia al perfil del aspirante autenticado.
@@ -71,7 +71,7 @@ export class ExperienceItemController {
   }
 
   // 3. ACTUALIZAR Y ELIMINAR
-  
+
   /**
    * PUT /api/recruitment/aspirants/experience/:id
    * Actualiza un registro de experiencia específico, verificando la propiedad.
