@@ -37,7 +37,7 @@ Además, en la raíz del proyecto se incluyen archivos como `package.json` para 
 ### Usuarios
 
 | Método | Endpoint        | Descripción                 |
-|--------|-----------------|------------------------------|
+|--------|-----------------|-----------------------------|
 | GET    | /users/profile  | Obtener perfil del usuario  |
 
 ### Ofertas de empleo
