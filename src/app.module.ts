@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { APP_GUARD } from '@nestjs/core';
-import * as path from 'path'; // 💡 NECESARIO para manejar rutas de migraciones
+import * as path from 'path'; // NECESARIO para manejar rutas de migraciones
 
 // Módulos de la Aplicación
 import { AuthModule } from './auth/auth.module';
