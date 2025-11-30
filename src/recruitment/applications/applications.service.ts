@@ -146,6 +146,8 @@ export class ApplicationsService {
       const applications = await this.applicationRepository
         .createQueryBuilder('app')
         .where('app.jobOfferId = :offerId', { offerId })
+        .leftJoinAndSelect('app.jobOffer', 'jobOffer')
+        .leftJoinAndSelect('jobOffer.company', 'company')
         .leftJoinAndSelect('app.aspirantProfile', 'aspirant')
         .leftJoinAndSelect('aspirant.user', 'aspirantUser')
         .getMany();
