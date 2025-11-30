@@ -11,6 +11,7 @@ Este proyecto implementa el backend para una aplicación de bolsa de empleo, des
   - Ofertas de empleo (crear, listar, actualizar, eliminar).
   - Aplicaciones a ofertas (postulación).
 - Integración con **Supabase** para persistencia y seguridad.
+- Pruebas unitarias para servicios principales.
 
 ## Estructura del proyecto
 El proyecto está organizado en una carpeta principal que contiene el código fuente en `src`. Dentro de `src` se encuentra el archivo de arranque `main.ts` y el módulo raíz `app.module.ts`. La lógica de negocio está dividida en módulos, cada uno con su propio controlador, servicio y DTOs. Los módulos principales son:
@@ -18,8 +19,10 @@ El proyecto está organizado en una carpeta principal que contiene el código fu
 - **users**: maneja el registro, login y perfil de los usuarios.
 - **jobs**: permite crear, listar, actualizar y eliminar ofertas de empleo.
 - **applications**: gestiona las postulaciones de los candidatos a las ofertas.
+- **company-profile**: gestiona la actualización de perfiles de empresa.
+- **applicant-profile**: gestiona la actualización de perfiles de candidatos.
 
-Además, en la raíz del proyecto se incluyen archivos como `package.json` para dependencias, `.env` para variables de entorno y el propio `README.md`.
+Además, en la raíz del proyecto se incluyen archivos como `package.json` para dependencias, `.env` para variables de entorno y el directorio `test/` con pruebas unitarias.
 
 
 ## Endpoints
@@ -34,7 +37,7 @@ Además, en la raíz del proyecto se incluyen archivos como `package.json` para 
 ### Usuarios
 
 | Método | Endpoint        | Descripción                 |
-|--------|-----------------|-----------------------------|
+|--------|-----------------|------------------------------|
 | GET    | /users/profile  | Obtener perfil del usuario  |
 
 ### Ofertas de empleo
@@ -55,10 +58,17 @@ Además, en la raíz del proyecto se incluyen archivos como `package.json` para 
 | GET    | /applications        | Listar aplicaciones del usuario        |
 | GET    | /applications/:id    | Detalle de una aplicación              |
 
+### Perfiles
+
+| Método | Endpoint                  | Descripción                        |
+|--------|---------------------------|------------------------------------|
+| PUT    | /company-profile          | Actualizar perfil de empresa       |
+| PUT    | /applicant-profile        | Actualizar perfil de candidato     |
+
 
 ## Project setup
 
-- Necesitas crear un `.env` con tu base de datos tu Configuración del Sistema y configuracion de JWT/Seguridad
+- Necesitas crear un `.env` con tu base de datos, configuración del sistema y configuración de JWT/Seguridad
 
 ```bash
 $ npm install
@@ -78,6 +88,10 @@ $ npm run start:prod
 ```
 
 ## Lanzar tests
+
+El proyecto incluye pruebas unitarias para los servicios principales del backend, ubicadas en el directorio `test/`:
+- `auth.service.spec.ts`: Pruebas para el servicio de autenticación (registro, login, validación de tokens).
+- `company-profile.service.spec.ts`: Pruebas para el servicio de perfil de empresa (actualización de datos).
 
 ```bash
 # unit tests
