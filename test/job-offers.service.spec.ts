@@ -49,12 +49,12 @@ describe('JobOffersService', () => {
         jest.clearAllMocks();
     });
 
-    it('should be defined', () => {
+    it('debería estar definido', () => {
         expect(service).toBeDefined();
     });
 
     describe('findAll', () => {
-        it('should return all open job offers', async () => {
+        it('debería devolver todas las ofertas de trabajo abiertas', async () => {
             const offers = [
                 { id: 1, title: 'Developer', status: 'Abierta', company: {} },
                 { id: 2, title: 'Designer', status: 'Abierta', company: {} },
@@ -72,7 +72,7 @@ describe('JobOffersService', () => {
             expect(result).toHaveLength(2);
         });
 
-        it('should return empty array if no offers found', async () => {
+        it('debería devolver un array vacío si no se encuentran ofertas', async () => {
             mockJobOfferRepository.find.mockResolvedValue([]);
 
             const result = await service.findAll();
@@ -82,7 +82,7 @@ describe('JobOffersService', () => {
     });
 
     describe('findOne', () => {
-        it('should return a job offer by id', async () => {
+        it('debería devolver una oferta de trabajo por id', async () => {
             const offer = {
                 id: 1,
                 title: 'Developer',
@@ -100,7 +100,7 @@ describe('JobOffersService', () => {
             expect(result).toEqual(offer);
         });
 
-        it('should throw NotFoundException if offer not found', async () => {
+        it('debería lanzar NotFoundException si la oferta no se encuentra', async () => {
             mockJobOfferRepository.findOne.mockResolvedValue(null);
 
             await expect(service.findOne(999)).rejects.toThrow(NotFoundException);
@@ -111,12 +111,12 @@ describe('JobOffersService', () => {
     });
 
     describe('create', () => {
-        it('should create a new job offer', async () => {
+        it('debería crear una nueva oferta de trabajo', async () => {
             const userId = 1;
             const createDto = {
                 title: 'Full Stack Developer',
                 description: 'We are looking for...',
-                salary: 50000,
+                salaryRange: '50000',
                 location: 'Madrid',
             };
 
@@ -140,7 +140,7 @@ describe('JobOffersService', () => {
             expect(result).toEqual(newOffer);
         });
 
-        it('should throw BadRequestException if company profile does not exist', async () => {
+        it('debería lanzar BadRequestException si el perfil de la empresa no existe', async () => {
             const userId = 1;
             const createDto = { title: 'Developer' } as any;
 
@@ -156,15 +156,15 @@ describe('JobOffersService', () => {
     });
 
     describe('update', () => {
-        it('should update an existing job offer', async () => {
+        it('debería actualizar una oferta de trabajo existente', async () => {
             const userId = 1;
             const offerId = 1;
-            const updateDto = { title: 'Senior Developer', salary: 60000 };
+            const updateDto = { title: 'Senior Developer', salaryRange: '60000' };
 
             const existingOffer = {
                 id: offerId,
                 title: 'Developer',
-                salary: 50000,
+                salaryRange: '50000',
                 company: { id: 10, userId },
             };
 
@@ -191,7 +191,7 @@ describe('JobOffersService', () => {
             expect(result.title).toBe('Senior Developer');
         });
 
-        it('should throw NotFoundException if offer does not exist', async () => {
+        it('debería lanzar NotFoundException si la oferta no existe', async () => {
             mockJobOfferRepository.findOne.mockResolvedValue(null);
 
             await expect(service.update(1, 999, {} as any)).rejects.toThrow(
@@ -199,7 +199,7 @@ describe('JobOffersService', () => {
             );
         });
 
-        it('should throw ForbiddenException if user is not the owner', async () => {
+        it('debería lanzar ForbiddenException si el usuario no es el propietario', async () => {
             const userId = 1;
             const offerId = 1;
             const updateDto = { title: 'Updated' };
@@ -221,7 +221,7 @@ describe('JobOffersService', () => {
     });
 
     describe('remove', () => {
-        it('should delete a job offer', async () => {
+        it('debería eliminar una oferta de trabajo', async () => {
             const userId = 1;
             const offerId = 1;
 
@@ -247,7 +247,7 @@ describe('JobOffersService', () => {
             });
         });
 
-        it('should return failure message if offer not found', async () => {
+        it('debería devolver mensaje de fallo si la oferta no se encuentra', async () => {
             mockJobOfferRepository.findOne.mockResolvedValue(null);
 
             const result = await service.remove(1, 999);
@@ -258,7 +258,7 @@ describe('JobOffersService', () => {
             });
         });
 
-        it('should throw BadRequestException if user is not the owner', async () => {
+        it('debería lanzar BadRequestException si el usuario no es el propietario', async () => {
             const userId = 1;
             const offerId = 1;
 

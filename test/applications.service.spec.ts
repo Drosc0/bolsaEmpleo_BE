@@ -77,12 +77,12 @@ describe('ApplicationsService', () => {
         );
     });
 
-    it('should be defined', () => {
+    it('debería estar definido', () => {
         expect(service).toBeDefined();
     });
 
     describe('createApplication', () => {
-        it('should create a new application successfully', async () => {
+        it('debería crear una nueva postulación exitosamente', async () => {
             const userId = 1;
             const jobOfferId = 10;
 
@@ -115,7 +115,7 @@ describe('ApplicationsService', () => {
             expect(result.status).toBe(ApplicationStatus.PENDING);
         });
 
-        it('should throw BadRequestException if aspirant profile does not exist', async () => {
+        it('debería lanzar BadRequestException si el perfil del aspirante no existe', async () => {
             mockAspirantProfileRepository.findOneBy.mockResolvedValue(null);
 
             await expect(service.createApplication(1, 10)).rejects.toThrow(
@@ -126,7 +126,7 @@ describe('ApplicationsService', () => {
             );
         });
 
-        it('should throw NotFoundException if job offer does not exist', async () => {
+        it('debería lanzar NotFoundException si la oferta de trabajo no existe', async () => {
             const aspirantProfile = { id: 5, userId: 1 };
 
             mockAspirantProfileRepository.findOneBy.mockResolvedValue(
@@ -142,7 +142,7 @@ describe('ApplicationsService', () => {
             );
         });
 
-        it('should throw BadRequestException if already applied', async () => {
+        it('debería lanzar BadRequestException si ya se ha postulado', async () => {
             const userId = 1;
             const jobOfferId = 10;
             const aspirantProfile = { id: 5, userId };
@@ -163,7 +163,7 @@ describe('ApplicationsService', () => {
             ).rejects.toThrow('Ya te has postulado a esta oferta de trabajo.');
         });
 
-        it('should throw InternalServerErrorException on unexpected error', async () => {
+        it('debería lanzar InternalServerErrorException en caso de error inesperado', async () => {
             const aspirantProfile = { id: 5, userId: 1 };
 
             mockAspirantProfileRepository.findOneBy.mockResolvedValue(
@@ -180,7 +180,7 @@ describe('ApplicationsService', () => {
     });
 
     describe('findAllByAspirant', () => {
-        it('should return all applications for an aspirant', async () => {
+        it('debería retornar todas las postulaciones de un aspirante', async () => {
             const userId = 1;
             const aspirantProfile = { id: 5, userId };
             const applications = [
@@ -202,7 +202,7 @@ describe('ApplicationsService', () => {
             expect(result).toHaveLength(2);
         });
 
-        it('should return empty array if aspirant profile does not exist', async () => {
+        it('debería retornar un array vacío si el perfil del aspirante no existe', async () => {
             mockAspirantProfileRepository.findOneBy.mockResolvedValue(null);
 
             const result = await service.findAllByAspirant(999);
@@ -212,7 +212,7 @@ describe('ApplicationsService', () => {
     });
 
     describe('findAllByCompany', () => {
-        it('should return all applications for a company', async () => {
+        it('debería retornar todas las postulaciones para una empresa', async () => {
             const userId = 1;
             const applications = [
                 {
@@ -230,7 +230,7 @@ describe('ApplicationsService', () => {
             expect(result).toEqual(applications);
         });
 
-        it('should throw InternalServerErrorException on error', async () => {
+        it('debería lanzar InternalServerErrorException en caso de error', async () => {
             mockQueryBuilder.getMany.mockRejectedValue(new Error('DB Error'));
 
             await expect(service.findAllByCompany(1)).rejects.toThrow(
@@ -240,7 +240,7 @@ describe('ApplicationsService', () => {
     });
 
     describe('findAllByOffer', () => {
-        it('should return all applications for a specific offer', async () => {
+        it('debería retornar todas las postulaciones para una oferta específica', async () => {
             const offerId = 10;
             const applications = [
                 { id: 1, aspirantProfile: { firstName: 'John' } },
@@ -255,7 +255,7 @@ describe('ApplicationsService', () => {
             expect(result).toHaveLength(2);
         });
 
-        it('should throw InternalServerErrorException on error', async () => {
+        it('debería lanzar InternalServerErrorException en caso de error', async () => {
             mockQueryBuilder.getMany.mockRejectedValue(new Error('DB Error'));
 
             await expect(service.findAllByOffer(10)).rejects.toThrow(
@@ -265,11 +265,11 @@ describe('ApplicationsService', () => {
     });
 
     describe('updateStatus', () => {
-        it('should update application status successfully', async () => {
+        it('debería actualizar el estado de la postulación exitosamente', async () => {
             const companyUserId = 1;
             const applicationId = 5;
             const updateDto = {
-                status: ApplicationStatus.ACCEPTED,
+                status: ApplicationStatus.HIRED,
                 internalNote: 'Good candidate',
             };
 
@@ -285,7 +285,7 @@ describe('ApplicationsService', () => {
 
             const updatedApplication = {
                 ...application,
-                status: ApplicationStatus.ACCEPTED,
+                status: ApplicationStatus.HIRED,
                 internalNote: 'Good candidate',
             };
 
@@ -303,21 +303,21 @@ describe('ApplicationsService', () => {
                 relations: ['jobOffer', 'jobOffer.company', 'jobOffer.company.user'],
             });
             expect(applicationRepository.save).toHaveBeenCalled();
-            expect(result.status).toBe(ApplicationStatus.ACCEPTED);
+            expect(result.status).toBe(ApplicationStatus.HIRED);
         });
 
-        it('should throw NotFoundException if application does not exist', async () => {
+        it('debería lanzar NotFoundException si la postulación no existe', async () => {
             mockApplicationRepository.findOne.mockResolvedValue(null);
 
             await expect(
-                service.updateStatus(1, 999, { status: ApplicationStatus.ACCEPTED }),
+                service.updateStatus(1, 999, { status: ApplicationStatus.HIRED }),
             ).rejects.toThrow(NotFoundException);
         });
 
-        it('should throw ForbiddenException if user is not the owner', async () => {
+        it('debería lanzar ForbiddenException si el usuario no es el propietario', async () => {
             const companyUserId = 1;
             const applicationId = 5;
-            const updateDto = { status: ApplicationStatus.ACCEPTED };
+            const updateDto = { status: ApplicationStatus.HIRED };
 
             const application = {
                 id: applicationId,
@@ -340,7 +340,7 @@ describe('ApplicationsService', () => {
             );
         });
 
-        it('should throw InternalServerErrorException on save error', async () => {
+        it('debería lanzar InternalServerErrorException en caso de error al guardar', async () => {
             const application = {
                 id: 5,
                 jobOffer: { company: { user: { id: 1 } } },
@@ -350,7 +350,7 @@ describe('ApplicationsService', () => {
             mockApplicationRepository.save.mockRejectedValue(new Error('DB Error'));
 
             await expect(
-                service.updateStatus(1, 5, { status: ApplicationStatus.ACCEPTED }),
+                service.updateStatus(1, 5, { status: ApplicationStatus.HIRED }),
             ).rejects.toThrow(InternalServerErrorException);
         });
     });
