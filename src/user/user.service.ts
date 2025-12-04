@@ -50,9 +50,7 @@ export class UserService {
     };
   }
 
-  // ==========================================================
   // MÉTODOS PARA ESTADÍSTICAS
-  // ==========================================================
   async countAll(): Promise<number> {
     return this.usersRepository.count();
   }
